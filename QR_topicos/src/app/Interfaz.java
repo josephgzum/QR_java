@@ -1,8 +1,14 @@
 package app;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 
@@ -34,6 +40,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QRCreator");
@@ -61,20 +68,33 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jButton1.setText("Guardar QR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -129,7 +149,7 @@ public class Interfaz extends javax.swing.JFrame {
         if(TxtContent.getText().length()>0)
         {
             MyQRCreator qr = new MyQRCreator();
-            QRDialog qRDialog = new QRDialog(this,true);            
+           // QRDialog qRDialog = new QRDialog(this,true);            
             setImageQR( qr.createQR(TxtContent.getText(), (Integer)SpDimension.getValue()), TxtContent.getText() );
            // qRDialog.setVisible(true);    
           // jLabel4.setIcon(icon);
@@ -138,6 +158,33 @@ public class Interfaz extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_BtnCreateActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        // GUARDAR CAMBIOS XD 
+        
+        
+         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar Codigo QR");
+        FileFilter filter = new FileNameExtensionFilter("QR Image", "PNG");
+        fileChooser.addChoosableFileFilter(filter);
+        int userSelection = fileChooser.showSaveDialog(this);
+        if (userSelection == JFileChooser.APPROVE_OPTION)
+        {
+            File fileToSave = fileChooser.getSelectedFile();
+            if (!fileToSave.toString().endsWith(".png"))
+            {
+             fileToSave = new File(fileChooser.getSelectedFile()+".png");
+            }
+            try {            
+                ImageIO.write(bufferedImage, "png", fileToSave);
+            } catch (IOException ex) {
+                System.err.println( ex.getMessage() );
+            }
+           // dispose();
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 public void setImageQR(BufferedImage bufferedImage, String text)
     {
         if(bufferedImage!=null)
@@ -187,6 +234,7 @@ public void setImageQR(BufferedImage bufferedImage, String text)
     private javax.swing.JButton BtnCreate;
     private javax.swing.JSpinner SpDimension;
     private javax.swing.JTextField TxtContent;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
