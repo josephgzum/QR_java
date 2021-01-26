@@ -6,7 +6,7 @@
 package app;
 
 import Conexion.Conexion;
-import Modelo.Usuario;
+import Modelo.Usuarios;
 import ModeloDAO.loginDAO;
 import javax.swing.JOptionPane;
 
@@ -16,9 +16,9 @@ import javax.swing.JOptionPane;
  */
 public class login extends javax.swing.JFrame {
     Conexion cn = new Conexion();
-    Usuario us = new Usuario();
+    Usuarios us = new Usuarios();
     loginDAO log = new loginDAO();
-    principal p = new principal();
+    Principal p = new Principal();
     int id_usuario;
     /**
      * Creates new form login
