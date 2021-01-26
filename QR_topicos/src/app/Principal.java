@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  * @author iDz
  */
 public class Principal extends javax.swing.JFrame {
-      //login lg = new login();  
+      Interfaz i = new Interfaz();
     /**
      * Creates new form principal
      */
@@ -20,11 +20,15 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
       
         initComponents();
-        //txtid.setVisible(false);
-        //txtid.setEnabled(false);
+        
+        txtid.setVisible(false);
+        txtid.setEnabled(false);
         //System.out.println(""+lg.id_usuario);
        // ImageIcon icono = new ImageIcon(getClass().getResource("/Eecursos/uns logo 1.png"));
       //  jLabel1.setIcon(icono);
+    }
+    public void pasar_id(String id){
+        txtid.setText(id);
     }
     
     /**
@@ -41,6 +45,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txt_id = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtid = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -66,6 +71,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/1200px-Codigo_QR.svg.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 210, 170));
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 50, -1));
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -166,7 +172,11 @@ public class Principal extends javax.swing.JFrame {
         
       // abrir codificar 
      // MyQRCreator qr = new MyQRCreator();
-            Interfaz mostrar = new Interfaz();            
+            Interfaz mostrar = new Interfaz();   
+            String id = txtid.getText();
+            int valor = 1; 
+                    
+            mostrar.pasar_id(id,String.valueOf(valor));
            // setImageQR( qr.createQR(TxtContent.getText(), (Integer)SpDimension.getValue()), TxtContent.getText() );
            mostrar.setVisible(true);    
            
@@ -178,7 +188,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-         Decodificar mostrar = new Decodificar();            
+         Decodificar mostrar = new Decodificar();
+          String id = txtid.getText();
+            //int valor = 1; 
+                    
+            mostrar.pasar_id(id);
          mostrar.setVisible(true);    
            
          Principal ver = new Principal();            
@@ -264,5 +278,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel txt_id;
+    private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables
 }

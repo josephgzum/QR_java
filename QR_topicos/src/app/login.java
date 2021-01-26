@@ -19,7 +19,8 @@ public class login extends javax.swing.JFrame {
     Usuarios us = new Usuarios();
     loginDAO log = new loginDAO();
     Principal p = new Principal();
-    public int id_usuario;
+    Interfaz i = new Interfaz();
+    public static int id_usuario;
     /**
      * Creates new form login
      */
@@ -27,7 +28,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,7 +107,7 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String user =txtuser.getText();
         String pass=txtpass.getText();
-        us.setUser(user);
+        us.setDni(Integer.parseInt(user));
         us.setPass(pass);
         int estado=log.login(us);
         if (estado==1) {
@@ -114,7 +115,7 @@ public class login extends javax.swing.JFrame {
             //txtid.setText(String.valueOf(id_usuario));
             
             this.dispose();
-           //p.pasar_id(txtid.getText());
+           p.pasar_id(String.valueOf(id_usuario));
            p.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null,"Usuario Incorrecto");

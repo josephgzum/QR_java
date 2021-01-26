@@ -1,8 +1,14 @@
 package app;
 
+import Modelo.Consulta;
+import ModeloDAO.ConsultaDAO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -14,19 +20,27 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Interfaz extends javax.swing.JFrame {
  BufferedImage bufferedImage;
+ Consulta ct = new Consulta();
+ ConsultaDAO dao= new ConsultaDAO();
+ //login log = new login();
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
         
+        //txt_id.setText(String.valueOf(log.id_usuario));
         setLocationRelativeTo(null);
         
     jButton1.setEnabled(false);
-    
+        txt_id.setVisible(false);
+        txt_id.setEnabled(false);
     
     }
-
+    public void pasar_id(String id,String a){
+        txt_id.setText(id);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +62,7 @@ public class Interfaz extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        txt_id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QRCreator");
@@ -139,7 +154,7 @@ public class Interfaz extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -158,13 +173,16 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtContent, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnCreate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtContent, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtnCreate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
+                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -185,7 +203,9 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(SpDimension, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -195,7 +215,7 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCreateActionPerformed
-
+        
         if(TxtContent.getText().length()>0)
         {
             MyQRCreator qr = new MyQRCreator();
@@ -206,8 +226,23 @@ public class Interfaz extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Campo Texto se encuentra Vacio - Ingresar Texto ","Error",JOptionPane.ERROR_MESSAGE);
         }
-        
-       
+         Date date = new Date(); // This object contains the current date value
+         jButton1.setEnabled(true);
+         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+         System.out.println(formatter.format(date));
+         String fecha= formatter.format(date) ;
+         System.out.println(fecha);
+         
+         int accion=1;
+         ///////// CONTENIDO 
+         String contenido=TxtContent.getText();
+         String id=txt_id.getText();
+         int dni=dao.dni(Integer.parseInt(id));
+         ct.setDni(dni);
+         ct.setFecha(fecha);
+         ct.setAccion(accion);
+         ct.setContenido(contenido);
+         dao.insertar(ct);
     }//GEN-LAST:event_BtnCreateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -239,7 +274,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void BtnCreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCreateMouseClicked
         // TODO add your handling code here:
-       
+        jButton1.setEnabled(true);
         
     }//GEN-LAST:event_BtnCreateMouseClicked
 
@@ -321,5 +356,6 @@ public void setImageQR(BufferedImage bufferedImage, String text)
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txt_id;
     // End of variables declaration//GEN-END:variables
 }
