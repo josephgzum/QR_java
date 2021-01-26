@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  * @author iDz
  */
 public class Principal extends javax.swing.JFrame {
-        public int contador;
+        
     /**
      * Creates new form principal
      */
@@ -46,7 +46,6 @@ public class Principal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -132,9 +131,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("jMenu4");
-        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -240,7 +236,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
