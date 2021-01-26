@@ -165,6 +165,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
+         Decodificar mostrar = new Decodificar();            
+         mostrar.setVisible(true);    
+           
+         Principal ver = new Principal();            
+          
+           ver.setVisible(false);    
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
@@ -183,12 +189,7 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
         // TODO add your handling code here:
         
-         Decodificar mostrar = new Decodificar();            
-         mostrar.setVisible(true);    
-           
-         Principal ver = new Principal();            
-          
-           ver.setVisible(false);    
+        
         
     }//GEN-LAST:event_jMenuItem4MouseClicked
 

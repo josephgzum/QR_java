@@ -253,30 +253,22 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         // TODO add your handling code here:
-        TxtContent.setText("");
-        SpDimension.setValue(0);
-        jLabel4.setText("");
-        jLabel4.setIcon(null);
-        Principal ver = new Principal();            
-        ver.setVisible(false);    
-        dispose();
+        
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void jToggleButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton3MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        
     }//GEN-LAST:event_jToggleButton3MouseClicked
 
     private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
         // TODO add your handling code here:
-        TxtContent.setText("");
-        SpDimension.setValue(0);
-        jLabel4.setText("");
-        jLabel4.setIcon(null);
+       
     }//GEN-LAST:event_jToggleButton2MouseClicked
 
     private void BtnCreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCreateMouseClicked
@@ -287,10 +279,21 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
+        TxtContent.setText("");
+        SpDimension.setValue(0);
+        jLabel4.setText("");
+        jLabel4.setIcon(null);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        TxtContent.setText("");
+        SpDimension.setValue(0);
+        jLabel4.setText("");
+        jLabel4.setIcon(null);
+        Principal ver = new Principal();            
+        ver.setVisible(false);    
+        dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 public void setImageQR(BufferedImage bufferedImage, String text)
     {
