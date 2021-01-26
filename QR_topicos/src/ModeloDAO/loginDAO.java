@@ -15,12 +15,12 @@ public class loginDAO {
     ResultSet rs;
     
  public int login(Usuarios us){
-     String sql ="select * from usuarios where nombre=? and clave=?";
+     String sql ="select * from usuarios where dni=? and clave=?";
      int estado=0;
      try{
          con=cn.Conection();
          ps=con.prepareStatement(sql);
-         ps.setString(1,us.getUser());
+         ps.setInt(1,us.getDni());
          ps.setString(2,us.getPass());
          rs=ps.executeQuery();
          while(rs.next()){
@@ -33,12 +33,12 @@ public class loginDAO {
  }   
     
  public int id_user(Usuarios us){
-     String sql ="select * from usuarios where nombre=? and clave=?";
+     String sql ="select * from usuarios where dni=? and clave=?";
      int id=0;
      try{
          con=cn.Conection();
          ps=con.prepareStatement(sql);
-         ps.setString(1,us.getUser());
+         ps.setInt(1,us.getDni());
          ps.setString(2,us.getPass());
          rs=ps.executeQuery();
          while(rs.next()){

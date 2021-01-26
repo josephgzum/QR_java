@@ -1,5 +1,7 @@
 package app;
 
+import Modelo.Consulta;
+import ModeloDAO.ConsultaDAO;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
@@ -21,10 +23,13 @@ import com.google.zxing.Reader;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 
 import com.google.zxing.common.HybridBinarizer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Decodificar extends javax.swing.JFrame {
- 
+ Consulta ct = new Consulta();
+ ConsultaDAO dao= new ConsultaDAO();
     /**
      * Creates new form Interfaz
      */
@@ -32,12 +37,16 @@ public class Decodificar extends javax.swing.JFrame {
 
     public Decodificar() {
         initComponents();
-        
+        txtid.setVisible(false);
+        txtid.setEnabled(false);
         setLocationRelativeTo(null);     
         BtnCreate1.setEnabled(false);
        
     }
-
+     public void pasar_id(String id){
+        txtid.setText(id);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,7 +69,7 @@ public class Decodificar extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        txtid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QRCreator");
@@ -130,13 +139,6 @@ public class Decodificar extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("CAM");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -144,13 +146,10 @@ public class Decodificar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButton5)
+                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -158,7 +157,8 @@ public class Decodificar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(142, 142, 142)
@@ -185,7 +185,7 @@ public class Decodificar extends javax.swing.JFrame {
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5))))
+                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -325,7 +325,23 @@ public class Decodificar extends javax.swing.JFrame {
                   
               }
              }
-        /////
+             Date date = new Date(); // This object contains the current date value
+         jButton1.setEnabled(true);
+         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+         System.out.println(formatter.format(date));
+         String fecha= formatter.format(date) ;
+         System.out.println(fecha);
+         
+         int accion=2;
+         ///////// CONTENIDO 
+         String contenido=jTextArea1.getText();
+         String id=txtid.getText();
+         int dni=dao.dni(Integer.parseInt(id));
+         ct.setDni(dni);
+         ct.setFecha(fecha);
+         ct.setAccion(accion);
+         ct.setContenido(contenido);
+         dao.insertar(ct);
         
     }//GEN-LAST:event_BtnCreate1ActionPerformed
 
@@ -373,10 +389,6 @@ public class Decodificar extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -417,7 +429,6 @@ public class Decodificar extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPane3;
@@ -425,5 +436,6 @@ public class Decodificar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables
 }
