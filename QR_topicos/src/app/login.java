@@ -19,7 +19,7 @@ public class login extends javax.swing.JFrame {
     Usuarios us = new Usuarios();
     loginDAO log = new loginDAO();
     Principal p = new Principal();
-    int id_usuario;
+    public int id_usuario;
     /**
      * Creates new form login
      */
@@ -43,7 +43,6 @@ public class login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtpass = new javax.swing.JPasswordField();
-        txtid = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,12 +50,10 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
@@ -73,10 +70,9 @@ public class login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Porfavor ingrese username y password");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 250, -1));
 
@@ -92,20 +88,13 @@ public class login extends javax.swing.JFrame {
         });
         getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 150, -1));
 
-        txtid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 60, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/bk3.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/uns logo.png"))); // NOI18N
         jLabel1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 jLabel1ComponentAdded(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 510));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,15 +107,15 @@ public class login extends javax.swing.JFrame {
         String user =txtuser.getText();
         String pass=txtpass.getText();
         us.setUser(user);
-        us.setClave(pass);
+        us.setPass(pass);
         int estado=log.login(us);
         if (estado==1) {
             id_usuario=log.id_user(us);
-            txtid.setText(String.valueOf(id_usuario));
+            //txtid.setText(String.valueOf(id_usuario));
             
             this.dispose();
-            p.pasar_id(txtid.getText());
-            p.setVisible(true);
+           //p.pasar_id(txtid.getText());
+           p.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null,"Usuario Incorrecto");
         }
@@ -149,10 +138,6 @@ public class login extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_txtpassKeyPressed
-
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +181,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtid;
     private javax.swing.JPasswordField txtpass;
     private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
