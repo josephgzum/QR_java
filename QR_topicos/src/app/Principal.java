@@ -103,6 +103,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.add(jSeparator1);
 
         jMenuItem4.setText("Decodificar");
+        jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem4MouseClicked(evt);
+            }
+        });
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -174,6 +179,18 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
          System.exit(0);
     }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
+        // TODO add your handling code here:
+        
+         Decodificar mostrar = new Decodificar();            
+         mostrar.setVisible(true);    
+           
+         Principal ver = new Principal();            
+          
+           ver.setVisible(false);    
+        
+    }//GEN-LAST:event_jMenuItem4MouseClicked
 
     /**
      * @param args the command line arguments
