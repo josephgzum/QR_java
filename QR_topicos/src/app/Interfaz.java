@@ -207,6 +207,7 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Campo Texto se encuentra Vacio - Ingresar Texto ","Error",JOptionPane.ERROR_MESSAGE);
         }
         
+       
     }//GEN-LAST:event_BtnCreateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -238,7 +239,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void BtnCreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCreateMouseClicked
         // TODO add your handling code here:
-        jButton1.setEnabled(true);
+       
         
     }//GEN-LAST:event_BtnCreateMouseClicked
 
