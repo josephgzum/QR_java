@@ -13,14 +13,18 @@ import javax.swing.ImageIcon;
  */
 public class Principal extends javax.swing.JFrame {
       Interfaz i = new Interfaz();
+      
     /**
+     * 
      * Creates new form principal
      */
       
     public Principal() {
       
         initComponents();
-        
+                
+          
+      
         txtid.setVisible(false);
         txtid.setEnabled(false);
         //System.out.println(""+lg.id_usuario);
@@ -192,12 +196,10 @@ public class Principal extends javax.swing.JFrame {
           String id = txtid.getText();
             //int valor = 1; 
                     
-            mostrar.pasar_id(id);
+         mostrar.pasar_id(id);
          mostrar.setVisible(true);    
            
-         Principal ver = new Principal();            
-          
-           ver.setVisible(false);    
+         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed

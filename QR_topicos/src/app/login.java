@@ -51,11 +51,11 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Username :");
+        jLabel2.setText("DNI : ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Password :");
+        jLabel3.setText("Contraseña :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         txtuser.addActionListener(new java.awt.event.ActionListener() {
@@ -65,17 +65,18 @@ public class login extends javax.swing.JFrame {
         });
         getContentPane().add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 150, -1));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("INGRESAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setText("Porfavor ingrese username y password");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 250, -1));
+        jLabel4.setText("Porfavor ingrese su DNI y una Contraseña(opcional).");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 340, -1));
 
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +96,7 @@ public class login extends javax.swing.JFrame {
                 jLabel1ComponentAdded(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 280));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 510, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,6 +120,7 @@ public class login extends javax.swing.JFrame {
            p.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null,"Usuario Incorrecto");
+            //JOptionPane.showConfirmDialog(p, p);
         }
              
     }//GEN-LAST:event_jButton1ActionPerformed

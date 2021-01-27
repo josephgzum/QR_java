@@ -22,6 +22,8 @@ public class Interfaz extends javax.swing.JFrame {
  BufferedImage bufferedImage;
  Consulta ct = new Consulta();
  ConsultaDAO dao= new ConsultaDAO();
+
+ 
  //login log = new login();
     /**
      * Creates new form Interfaz
@@ -32,10 +34,10 @@ public class Interfaz extends javax.swing.JFrame {
         //txt_id.setText(String.valueOf(log.id_usuario));
         setLocationRelativeTo(null);
         
-    jButton1.setEnabled(false);
+        jButton1.setEnabled(false);
         txt_id.setVisible(false);
         txt_id.setEnabled(false);
-    
+         
     }
     public void pasar_id(String id,String a){
         txt_id.setText(id);
@@ -280,13 +282,12 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         TxtContent.setText("");
-        SpDimension.setValue(0);
-        jLabel4.setText("");
-        jLabel4.setIcon(null);
-        Principal ver = new Principal();            
-        ver.setVisible(false);    
-        dispose();
+            TxtContent.setText("");
+            SpDimension.setValue(0);
+            jLabel4.setText("");
+            jLabel4.setIcon(null);
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -296,6 +297,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 public void setImageQR(BufferedImage bufferedImage, String text)

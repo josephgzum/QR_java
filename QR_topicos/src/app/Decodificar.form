@@ -216,6 +216,7 @@
                                 <LineBorder/>
                               </Border>
                             </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -291,6 +292,9 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtid">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>

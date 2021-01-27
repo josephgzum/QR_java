@@ -4,9 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/app/Principal.java</file>
+            <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/Recursos/1200px-Codigo_QR.svg.png</file>
+            <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/ModeloDAO/loginDAO.java</file>
             <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/app/login.java</file>
-            <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/Conexion/Conexion.java</file>
+            <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/app/MyQRCreator.java</file>
+            <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/Recursos/uns%20logo%201.png</file>
             <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/app/Interfaz.java</file>
+            <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/app/HistorialQR.java</file>
+            <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/Modelo/Usuarios.java</file>
             <file>file:/C:/Users/iDz/Documents/NetBeansProjects/QRCreator-master/QR_topicos/src/app/Decodificar.java</file>
         </group>
     </open-files>

@@ -30,6 +30,7 @@ import java.util.Date;
 public class Decodificar extends javax.swing.JFrame {
  Consulta ct = new Consulta();
  ConsultaDAO dao= new ConsultaDAO();
+ 
     /**
      * Creates new form Interfaz
      */
@@ -41,6 +42,7 @@ public class Decodificar extends javax.swing.JFrame {
         txtid.setEnabled(false);
         setLocationRelativeTo(null);     
         BtnCreate1.setEnabled(false);
+        
        
     }
      public void pasar_id(String id){
@@ -87,6 +89,7 @@ public class Decodificar extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 
         BtnCreate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -138,6 +141,8 @@ public class Decodificar extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        txtid.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -310,7 +315,12 @@ public class Decodificar extends javax.swing.JFrame {
                     Result resultado;
                   try {
                       resultado = lector.decode(mapaBits);
-                        jTextArea1.setText(resultado.getText());
+                      if (resultado==null) {
+                         JOptionPane.showMessageDialog(null, "Error el Codigo QR cargado no es legible");
+                        } else {
+                       jTextArea1.setText(resultado.getText());
+                      }
+                     
                   } catch (NotFoundException ex) {
                       Logger.getLogger(Decodificar.class.getName()).log(Level.SEVERE, null, ex);
                   } catch (ChecksumException ex) {
@@ -321,11 +331,11 @@ public class Decodificar extends javax.swing.JFrame {
                       
               } catch (IOException ex) {
                   Logger.getLogger(Decodificar.class.getName()).log(Level.SEVERE, null, ex);
-                   
-                  
+                                 
               }
              }
-             Date date = new Date(); // This object contains the current date value
+             
+         Date date = new Date(); // This object contains the current date value
          jButton1.setEnabled(true);
          SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
          System.out.println(formatter.format(date));
@@ -336,13 +346,16 @@ public class Decodificar extends javax.swing.JFrame {
          ///////// CONTENIDO 
          String contenido=jTextArea1.getText();
          String id=txtid.getText();
+         if (contenido==null) {
+               // JOptionPane.showMessageDialog(null, "Error el Codigo QR cargado no es legible");
+        } else {
          int dni=dao.dni(Integer.parseInt(id));
          ct.setDni(dni);
          ct.setFecha(fecha);
          ct.setAccion(accion);
          ct.setContenido(contenido);
          dao.insertar(ct);
-        
+         }
     }//GEN-LAST:event_BtnCreate1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -352,6 +365,7 @@ public class Decodificar extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+           
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
